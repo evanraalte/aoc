@@ -1,0 +1,51 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Part A",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "main",
+            "args": [
+                "solve",
+                "${fileBasenameNoExtension}",
+                "--year",
+                "${input:year}",
+                "--part",
+                "a"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            }
+        },
+        {
+            "name": "Debug Part B",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "main",
+            "args": [
+                "solve",
+                "${fileBasenameNoExtension}",
+                "--year",
+                "${input:year}",
+                "--part",
+                "b"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "year",
+            "type": "promptString",
+            "description": "Year",
+            "default": "2024"
+        }
+    ]
+}
