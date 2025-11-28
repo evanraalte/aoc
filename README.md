@@ -53,13 +53,13 @@ Generate boilerplate code for a new day:
 
 ```bash
 # Create solution for day 5 of year 2023
-uv run main.py new 5 --year 2023
+uv run main.py new 2023/5
 
-# Short form
-uv run main.py new 5 -y 2023
+# Create day 15 of year 2024
+uv run main.py new 2024/15
 
 # Overwrite existing file
-uv run main.py new 5 -y 2023 --force
+uv run main.py new 2023/5 --force
 ```
 
 This creates a file at `solutions/2023/05.py` with template code for both parts A and B.
@@ -69,20 +69,20 @@ This creates a file at `solutions/2023/05.py` with template code for both parts 
 Execute a solution with automatic input fetching:
 
 ```bash
-# Run day 1, part A for year 2023
-uv run main.py solve 1 --year 2023 --part a
+# Run year 2023, day 1, part A
+uv run main.py solve 2023/1a
 
-# Short form
-uv run main.py solve 1 -y 2023 -p a
+# Run year 2024, day 15, part B
+uv run main.py solve 2024/15b
 
-# Default year is 2015, default part is 'a'
-uv run main.py solve 1
-
-# Run part B
-uv run main.py solve 1 -y 2023 -p b
+# Run using file path (useful for debugging - no prompts!)
+uv run main.py solve solutions/2024/03.py a
 
 # Skip example tests (run only on real input)
-uv run main.py solve 1 -y 2023 -p a --skip-examples
+uv run main.py solve 2023/1a --skip-examples
+
+# Run and submit answer
+uv run main.py solve 2024/3a --submit
 ```
 
 Features:
@@ -91,18 +91,17 @@ Features:
 - Only proceeds to real input if all examples pass
 - Times solution execution
 - Displays result in a beautiful panel
+- Supports file path format for seamless VS Code debugging
 
-### Submit Answer
+### Debugging in VS Code
 
-Submit your answer directly to Advent of Code:
+The project includes pre-configured debug configurations that require **zero prompts**:
 
-```bash
-# Run and submit in one command
-uv run main.py solve 1 -y 2023 -p a --submit
+1. Open any solution file (e.g., `solutions/2024/03.py`)
+2. Press F5 or select "Debug Part A" or "Debug Part B" from the debug dropdown
+3. Start debugging immediately - no year/day prompts needed!
 
-# Short form
-uv run main.py solve 1 -y 2023 -p a -s
-```
+The debug configurations automatically extract the year and day from your file path.
 
 ### Get Help
 
@@ -134,7 +133,7 @@ aoc/
 │   └── runner.py          # Solution execution logic
 ├── utils/                 # Utility modules
 │   ├── __init__.py
-│   ├── validation.py      # Input validation
+│   ├── parser.py          # Puzzle format parsing (YYYY/DDa)
 │   ├── paths.py           # Path and file helpers
 │   └── display.py         # Display and formatting
 └── solutions/             # Your solutions
@@ -156,7 +155,7 @@ aoc/
 - **commands/solve.py** - Solve command with example testing and submission
 - **commands/new.py** - New command for creating solution files
 - **core/runner.py** - Dynamic module loading and solution execution
-- **utils/validation.py** - Input validation (day, part)
+- **utils/parser.py** - Puzzle format parsing and validation (YYYY/DDa format)
 - **utils/paths.py** - File path management and directory creation
 - **utils/display.py** - Rich console output formatting
 
@@ -204,7 +203,9 @@ def b(input: str) -> Any:
 
 ## Tips
 
-- Use `uv run main.py new <day>` to quickly scaffold new solutions
+- Use `uv run main.py new YYYY/DD` to quickly scaffold new solutions
+- Use the format `YYYY/DDa` or `YYYY/DDb` for solve commands (e.g., `2024/3a`)
+- For debugging in VS Code, just open the solution file and press F5 - no prompts needed!
 - The `solve` command automatically runs example tests first to validate your solution
 - Use `--skip-examples` if you want to bypass example tests
 - The tool automatically handles any return type that can be converted to string

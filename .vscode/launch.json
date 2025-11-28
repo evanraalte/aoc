@@ -8,10 +8,7 @@
             "module": "main",
             "args": [
                 "solve",
-                "${fileBasenameNoExtension}",
-                "--year",
-                "${input:year}",
-                "--part",
+                "${relativeFile}",
                 "a"
             ],
             "console": "integratedTerminal",
@@ -27,10 +24,7 @@
             "module": "main",
             "args": [
                 "solve",
-                "${fileBasenameNoExtension}",
-                "--year",
-                "${input:year}",
-                "--part",
+                "${relativeFile}",
                 "b"
             ],
             "console": "integratedTerminal",
@@ -38,14 +32,6 @@
             "env": {
                 "PYTHONPATH": "${workspaceFolder}"
             }
-        }
-    ],
-    "inputs": [
-        {
-            "id": "year",
-            "type": "promptString",
-            "description": "Year",
-            "default": "2024"
         }
     ]
 }

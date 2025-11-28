@@ -4,23 +4,41 @@ import time
 import typer
 from aocd.models import Puzzle
 
-from utils.validation import validate_day, validate_part
+from utils.parser import parse_puzzle
 from utils.display import display_result, console
 from core.runner import run
 
 
 def solve(
-    day: int = typer.Argument(..., help="Day of the puzzle (1-25)"),
-    year: int = typer.Option(2015, "--year", "-y", help="Year of the puzzle"),
-    part: str = typer.Option("a", "--part", "-p", help="Part of the puzzle (a or b)"),
+    puzzle: str = typer.Argument(..., help="Puzzle in format YYYY/DD[a|b] or file path (e.g., 2024/3a or solutions/2024/03.py)"),
+    part: str = typer.Argument(None, help="Part (a or b) - required when using file path"),
     submit_answer: bool = typer.Option(False, "--submit", "-s", help="Submit the answer after solving"),
     skip_examples: bool = typer.Option(False, "--skip-examples", help="Skip running example tests"),
 ):
     """
-    Run an Advent of Code solution for a specific day, year, and part.
+    Run an Advent of Code solution for a specific puzzle.
+
+    Examples:
+        solve 2024/3a                  - Run year 2024, day 3, part A
+        solve 2024/15b -s              - Run and submit year 2024, day 15, part B
+        solve solutions/2024/03.py a   - Run from file path (useful for debugging)
     """
-    validate_day(day)
-    validate_part(part)
+    year, day, parsed_part = parse_puzzle(puzzle, require_part=False)
+
+    # Use parsed part if available, otherwise use provided part argument
+    if parsed_part is not None:
+        part = parsed_part
+    elif part is None:
+        console.print("[red]Error: Part (a or b) is required[/red]")
+        console.print("[yellow]Use format YYYY/DDa or provide part as second argument[/yellow]")
+        raise typer.Exit(code=1)
+
+    # Validate part
+    if part.lower() not in ["a", "b"]:
+        console.print("[red]Error: Part must be 'a' or 'b'[/red]")
+        raise typer.Exit(code=1)
+
+    part = part.lower()
 
     # Get puzzle input
     console.print(f"[cyan]📥 Fetching input for Year {year}, Day {day}...[/cyan]")
