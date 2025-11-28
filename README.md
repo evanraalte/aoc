@@ -9,7 +9,6 @@ A beautiful CLI tool for managing and running Advent of Code solutions with rich
 - ⏱️ **Performance timing** to optimize your solutions
 - 🎨 **Rich terminal output** with colors and formatting
 - 🧪 **Automatic example testing** validates solutions before running on real input
-- 🧪 **Testing framework** for custom example inputs
 - 📤 **Automatic submission** to Advent of Code
 - 💾 **Organized structure** with year/day solution files
 - 📁 **Modular codebase** with clean separation of concerns
@@ -93,18 +92,6 @@ Features:
 - Times solution execution
 - Displays result in a beautiful panel
 
-### Test with Example Input
-
-Test your solution with example data before running on real input:
-
-```bash
-# Test with example input
-uv run main.py test 1 "1abc2\npqr3stu8vwx\na1b2c3d4e5f" -y 2023 -p a
-
-# Test part B
-uv run main.py test 1 "example input here" -y 2023 -p b
-```
-
 ### Submit Answer
 
 Submit your answer directly to Advent of Code:
@@ -126,7 +113,6 @@ uv run main.py --help
 # Command-specific help
 uv run main.py solve --help
 uv run main.py new --help
-uv run main.py test --help
 ```
 
 ## Project Structure
@@ -142,8 +128,7 @@ aoc/
 ├── commands/              # CLI command modules
 │   ├── __init__.py
 │   ├── solve.py           # Solve command (run solutions with example testing)
-│   ├── new.py             # New command (create boilerplate)
-│   └── test.py            # Test command (test with custom input)
+│   └── new.py             # New command (create boilerplate)
 ├── core/                  # Core functionality
 │   ├── __init__.py
 │   └── runner.py          # Solution execution logic
@@ -170,7 +155,6 @@ aoc/
 - **templates.py** - Boilerplate code templates for new solutions
 - **commands/solve.py** - Solve command with example testing and submission
 - **commands/new.py** - New command for creating solution files
-- **commands/test.py** - Test command for running with custom input
 - **core/runner.py** - Dynamic module loading and solution execution
 - **utils/validation.py** - Input validation (day, part)
 - **utils/paths.py** - File path management and directory creation
@@ -223,7 +207,6 @@ def b(input: str) -> Any:
 - Use `uv run main.py new <day>` to quickly scaffold new solutions
 - The `solve` command automatically runs example tests first to validate your solution
 - Use `--skip-examples` if you want to bypass example tests
-- Test with custom inputs using the `test` command
 - The tool automatically handles any return type that can be converted to string
 - Execution time is displayed to help you optimize solutions
 - Use `--submit` carefully - you have limited incorrect attempts per day!
