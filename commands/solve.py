@@ -1,6 +1,8 @@
 """Solve command - runs AOC solutions with example testing and optional submission."""
 
+import sys
 import time
+import traceback
 import typer
 from aocd.models import Puzzle
 
@@ -74,7 +76,10 @@ def solve(
                         console.print(f"[red]    Got:      {result}[/red]")
                         all_passed = False
                 except Exception as e:
-                    console.print(f"[red]  ✗ Example {i}: ERROR - {e}[/red]")
+                    console.print(f"[red]  ✗ Example {i}: ERROR - {type(e).__name__}: {e}[/red]")
+                    console.print(f"[dim]")
+                    traceback.print_exc()
+                    console.print(f"[/dim]")
                     all_passed = False
 
             if not all_passed:
@@ -91,8 +96,12 @@ def solve(
     try:
         answer = run(year=year, day=day, part=part, input=puzzle.input_data)
     except Exception as e:
-        console.print(f"[red]Error running solution: {e}[/red]")
-        raise typer.Exit(code=1)
+        elapsed = time.perf_counter() - start_time
+        console.print(f"\n[red]❌ Error running solution ({elapsed*1000:.2f}ms):[/red]")
+        console.print(f"[red]{type(e).__name__}: {e}[/red]\n")
+        traceback.print_exc()
+        # Re-raise the original exception to preserve debugging context
+        raise
     elapsed = time.perf_counter() - start_time
 
     # Display result
