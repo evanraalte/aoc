@@ -8,7 +8,8 @@ A beautiful CLI tool for managing and running Advent of Code solutions with rich
 - 📦 **Boilerplate generator** for quick solution scaffolding
 - ⏱️ **Performance timing** to optimize your solutions
 - 🎨 **Rich terminal output** with colors and formatting
-- 🧪 **Testing framework** for example inputs
+- 🧪 **Automatic example testing** validates solutions before running on real input
+- 🧪 **Testing framework** for custom example inputs
 - 📤 **Automatic submission** to Advent of Code
 - 💾 **Organized structure** with year/day solution files
 - 📁 **Modular codebase** with clean separation of concerns
@@ -80,10 +81,15 @@ uv run main.py solve 1
 
 # Run part B
 uv run main.py solve 1 -y 2023 -p b
+
+# Skip example tests (run only on real input)
+uv run main.py solve 1 -y 2023 -p a --skip-examples
 ```
 
 Features:
 - Automatically fetches your puzzle input
+- Runs example tests first and validates your solution
+- Only proceeds to real input if all examples pass
 - Times solution execution
 - Displays result in a beautiful panel
 
@@ -129,10 +135,15 @@ uv run main.py test --help
 aoc/
 ├── .env                    # Your AOC session token (gitignored)
 ├── .gitignore             # Ignore patterns
-├── main.py                # CLI entry point
+├── main.py                # CLI entry point (app setup and command registration)
 ├── templates.py           # Solution file templates
 ├── pyproject.toml         # Project dependencies
 ├── README.md              # This file
+├── commands/              # CLI command modules
+│   ├── __init__.py
+│   ├── solve.py           # Solve command (run solutions with example testing)
+│   ├── new.py             # New command (create boilerplate)
+│   └── test.py            # Test command (test with custom input)
 ├── core/                  # Core functionality
 │   ├── __init__.py
 │   └── runner.py          # Solution execution logic
@@ -155,8 +166,11 @@ aoc/
 
 ### Module Overview
 
-- **main.py** - CLI commands and application entry point
+- **main.py** - Minimal CLI entry point that registers commands
 - **templates.py** - Boilerplate code templates for new solutions
+- **commands/solve.py** - Solve command with example testing and submission
+- **commands/new.py** - New command for creating solution files
+- **commands/test.py** - Test command for running with custom input
 - **core/runner.py** - Dynamic module loading and solution execution
 - **utils/validation.py** - Input validation (day, part)
 - **utils/paths.py** - File path management and directory creation
@@ -207,7 +221,9 @@ def b(input: str) -> Any:
 ## Tips
 
 - Use `uv run main.py new <day>` to quickly scaffold new solutions
-- Test with example inputs using the `test` command before running on real data
+- The `solve` command automatically runs example tests first to validate your solution
+- Use `--skip-examples` if you want to bypass example tests
+- Test with custom inputs using the `test` command
 - The tool automatically handles any return type that can be converted to string
 - Execution time is displayed to help you optimize solutions
 - Use `--submit` carefully - you have limited incorrect attempts per day!
