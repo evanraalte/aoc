@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug Part A",
+            "name": "A",
             "type": "debugpy",
             "request": "launch",
             "module": "main",
@@ -18,7 +18,7 @@
             }
         },
         {
-            "name": "Debug Part B",
+            "name": "B",
             "type": "debugpy",
             "request": "launch",
             "module": "main",

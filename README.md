@@ -98,7 +98,7 @@ Features:
 The project includes pre-configured debug configurations that require **zero prompts**:
 
 1. Open any solution file (e.g., `solutions/2024/03.py`)
-2. Press F5 or select "Debug Part A" or "Debug Part B" from the debug dropdown
+2. Press F5 or select "A" or "B" from the debug dropdown
 3. Start debugging immediately - no year/day prompts needed!
 
 The debug configurations automatically extract the year and day from your file path.
