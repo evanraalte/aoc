@@ -9,7 +9,8 @@
             "args": [
                 "solve",
                 "${relativeFile}",
-                "a"
+                "a",
+                "--submit"
             ],
             "console": "integratedTerminal",
             "justMyCode": true,
@@ -25,7 +26,8 @@
             "args": [
                 "solve",
                 "${relativeFile}",
-                "b"
+                "b",
+                "--submit"
             ],
             "console": "integratedTerminal",
             "justMyCode": true,
