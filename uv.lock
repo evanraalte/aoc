@@ -39,24 +39,24 @@ requires-dist = [
 
 [[package]]
 name = "aocd-example-parser"
-version = "2024.12.25"
+version = "2025.12.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/85/73/4dc4b85442fac53784887d4952e61123798999dd68b41c28db2517e12592/aocd_example_parser-2024.12.25.tar.gz", hash = "sha256:51aa57aee98026164c063ffd943cb9a488787fd2d19779362bea04f9cd386984", size = 14682, upload-time = "2025-01-09T05:03:45.631Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ce/99/a7b5f6920c4c37c4ab1e3a7f1e08232be5fae7270849e8b07e16d85ed729/aocd_example_parser-2025.12.1.tar.gz", hash = "sha256:a553fb0ed619d3328245d64d0e439ade8fcef2184b3f4a08360716ec5a401dc3", size = 14790, upload-time = "2025-12-01T06:13:01.377Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/62/3c/e14435d3dd6a93ef81b8160ad0957c9eef2cc2eb9bf2019c47d853826120/aocd_example_parser-2024.12.25-py3-none-any.whl", hash = "sha256:6447dfb0b7d89bd901ed1c99d6c1c8d74a3b519b81f3db0e4116ca0ba9f5cb08", size = 13162, upload-time = "2025-01-09T05:03:43.388Z" },
+    { url = "https://files.pythonhosted.org/packages/e5/21/014ae4ab7ec0bb661b05c314f1b9c4782c09ee8106454a8c1324954ce9c3/aocd_example_parser-2025.12.1-py3-none-any.whl", hash = "sha256:9180ef01a9962e9783a67dffe3a197fb9d708c95c7768ba435b4c5f6e73f45a2", size = 13195, upload-time = "2025-12-01T06:13:00.204Z" },
 ]
 
 [[package]]
 name = "beautifulsoup4"
-version = "4.14.2"
+version = "4.14.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "soupsieve" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/77/e9/df2358efd7659577435e2177bfa69cba6c33216681af51a707193dec162a/beautifulsoup4-4.14.2.tar.gz", hash = "sha256:2a98ab9f944a11acee9cc848508ec28d9228abfd522ef0fad6a02a72e0ded69e", size = 625822, upload-time = "2025-09-29T10:05:42.613Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/c3/b0/1c6a16426d389813b48d95e26898aff79abbde42ad353958ad95cc8c9b21/beautifulsoup4-4.14.3.tar.gz", hash = "sha256:6292b1c5186d356bba669ef9f7f051757099565ad9ada5dd630bd9de5fa7fb86", size = 627737, upload-time = "2025-11-30T15:08:26.084Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/94/fe/3aed5d0be4d404d12d36ab97e2f1791424d9ca39c2f754a6285d59a3b01d/beautifulsoup4-4.14.2-py3-none-any.whl", hash = "sha256:5ef6fa3a8cbece8488d66985560f97ed091e22bbc4e9c2338508a9d5de6d4515", size = 106392, upload-time = "2025-09-29T10:05:43.771Z" },
+    { url = "https://files.pythonhosted.org/packages/1a/39/47f9197bdd44df24d67ac8893641e16f386c984a0619ef2ee4c51fbbc019/beautifulsoup4-4.14.3-py3-none-any.whl", hash = "sha256:0918bfe44902e6ad8d57732ba310582e98da931428d231a5ecb9e7c703a735bb", size = 107721, upload-time = "2025-11-30T15:08:24.087Z" },
 ]
 
 [[package]]
