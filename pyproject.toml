@@ -7,6 +7,9 @@ requires-python = ">=3.13"
 dependencies = [
     "advent-of-code-data>=2.1.0",
     "browser-cookie3>=0.20.1",
+    "numpy>=2.3.5",
+    "pulp>=3.3.0",
     "python-dotenv>=1.2.1",
+    "tqdm>=4.67.1",
     "typer>=0.20.0",
 ]
